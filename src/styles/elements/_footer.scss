@@ -1,0 +1,7 @@
+.main-footer {
+	@extend .text-bg-cotton-rose;
+	padding-block: rem(8);
+	p {
+		@extend small, .mb-0;
+	}
+}

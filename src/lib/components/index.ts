@@ -1,0 +1,10 @@
+export { default as AdvertSlot } from './adverts/AdvertSlot.svelte';
+export { default as ContentBlock } from './content/ContentBlock.svelte';
+export { default as HeroBanner } from './banners/HeroBanner.svelte';
+export { default as Section } from './layout/Section.svelte';
+export { default as Spacer } from './layout/Spacer.svelte';
+export { default as Treatments } from './dynamic/Treatments.svelte';
+export { default as Map } from './map/Mapbox.svelte';
+export { default as AnchorItem } from './anchor/AnchorItem.svelte';
+export { default as AnchorNavigation } from './anchor/AnchorNavigation.svelte';
+export { default as logo } from '$lib/assets/head2toegaydon-logo.jpg';

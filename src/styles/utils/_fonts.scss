@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+$lato: (
+	font-family: 'Lato',
+	styles: (
+		normal,
+		italic
+	),
+	weights: (
+		thin: 100,
+		light: 300,
+		regular: 400,
+		bold: 700,
+		black: 900
+	)
+);
+
+.lato {
+	font-family: map-get($lato, font-family), sans-serif;
+
+	@each $style in map-get($lato, styles) {
+		@each $weight-name, $weight-value in map-get($lato, weights) {
+			// Quote the $weight-name to avoid color warning
+			&-#{'#{$weight-name}'}-#{$style} {
+				font-weight: $weight-value;
+				font-style: $style;
+			}
+		}
+	}
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+
+$oswald: (
+	font-family: 'Oswald',
+	weights: (
+		extra-light: 200,
+		light: 300,
+		regular: 400,
+		medium: 500,
+		semi-bold: 600,
+		bold: 700
+	)
+);
+
+// Mixin for Oswald
+@mixin oswald($weight: regular) {
+	font-family: map-get($oswald, font-family), sans-serif;
+	font-weight: map-get(map-get($oswald, weights), $weight);
+}
+
+// Utility classes for Oswald
+.oswald {
+	font-family: map-get($oswald, font-family), sans-serif;
+
+	@each $weight-name, $weight-value in map-get($oswald, weights) {
+		&-#{$weight-name} {
+			font-weight: $weight-value;
+		}
+	}
+}
+
+$headings-font-family: map-get($oswald, font-family), sans-serif;
+$font-family-sans-serif:
+	map-get($lato, font-family),
+	system-ui,
+	-apple-system,
+	'Segoe UI',
+	Roboto,
+	'Helvetica Neue',
+	'Noto Sans',
+	'Liberation Sans',
+	Arial,
+	sans-serif,
+	'Apple Color Emoji',
+	'Segoe UI Emoji',
+	'Segoe UI Symbol',
+	'Noto Color Emoji';

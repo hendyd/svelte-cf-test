@@ -1,0 +1,18 @@
+.main-header {
+	position: sticky;
+	top: 0;
+	z-index: $zindex-sticky;
+	box-shadow: rem(0 0 10) rgba($black, 0);
+	background-color: $white;
+	border-bottom: rem(1) solid $gray-400;
+	padding-block: rem(8);
+	transition: $transition-base;
+	&.scrolled {
+		padding-block: rem(4);
+		box-shadow: rem(0 0 10) rgba($black, 0.2);
+	}
+}
+
+.main-header__logo {
+	mix-blend-mode: multiply;
+}

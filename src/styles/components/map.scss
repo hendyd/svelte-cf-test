@@ -1,0 +1,9 @@
+@import '../utils/variables';
+@import '../utils/functions';
+#map {
+	width: 100%;
+	height: rem(300);
+	@include media-breakpoint-up(md) {
+		height: rem(500);
+	}
+}

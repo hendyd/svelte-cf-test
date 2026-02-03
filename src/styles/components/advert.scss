@@ -1,0 +1,9 @@
+@import '../utils/variables';
+@import '../utils/functions';
+.advert {
+	position: fixed;
+	inset: auto 0 0;
+	z-index: $zindex-fixed;
+	background-color: $white;
+	padding: rem(8);
+}

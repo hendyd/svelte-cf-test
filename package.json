@@ -22,6 +22,36 @@
 		"svelte-check": "^4.3.5",
 		"typescript": "^5.9.3",
 		"vite": "^7.3.1",
-		"wrangler": "^4.62.0"
+		"wrangler": "^4.62.0",
+		"@eslint/compat": "^2.0.0",
+		"@eslint/js": "^9.39.2",
+		"@sveltejs/enhanced-img": "^0.9.3",
+		"@types/eslint": "^9.6.1",
+		"autoprefixer": "^10.4.20",
+		"baseline-browser-mapping": "^2.9.11",
+		"bootstrap": "^5.3.3",
+		"bootstrap-icons": "^1.11.3",
+		"concurrently": "^9.1.2",
+		"cssnano": "^7.0.6",
+		"eslint": "^9.28.0",
+		"eslint-config-prettier": "^10.1.5",
+		"eslint-plugin-svelte": "^3.9.1",
+		"globals": "^16.2.0",
+		"lottie-web": "^5.13.0",
+		"postcss": "^8.4.45",
+		"prettier": "^3.5.3",
+		"prettier-plugin-svelte": "^3.4.0",
+		"sass": "^1.78.0",
+		"scrollyfills": "^1.0.3",
+		"svelte-inview": "^4.0.2",
+		"svelte-turnstile": "^0.11.0",
+		"tslib": "^2.8.1",
+		"typescript-eslint": "^8.33.1",
+		"typescript-svelte-plugin": "^0.3.38",
+		"vite-plugin-devtools-json": "^1.0.0"
+	},
+	"dependencies": {
+		"mapbox-gl": "^3.18.1",
+		"svelte-meta-tags": "^4.5.0"
 	}
 }

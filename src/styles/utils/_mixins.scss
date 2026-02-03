@@ -1,0 +1,219 @@
+@import 'bootstrap/scss/mixins/breakpoints';
+
+@mixin pseudo($display: block, $pos: absolute, $content: '') {
+	content: $content;
+	display: $display;
+	position: $pos;
+}
+
+@mixin image-placeholder(
+	$containerPosition: relative,
+	$zindex: 0,
+	$backgroundColor: $gray-800,
+	$blendMode: luminosity,
+	$size: 35%,
+	$image: $logo
+) {
+	// Validate $containerPosition
+	@if not
+		index((absolute, relative, fixed, static, sticky, inherit, unset, initial), $containerPosition)
+	{
+		@error "Invalid container position: #{$containerPosition}. Allowed values: absolute, relative, fixed, static, sticky, inherit, unset, initial.";
+	}
+
+	// Validate $zindex (must be a number or 'auto')
+	@if type-of($zindex) != 'number' and $zindex != auto {
+		@error "Invalid z-index: #{$zindex}. Must be a number or 'auto'.";
+	}
+
+	// Validate $backgroundColor (must be a color)
+	@if type-of($backgroundColor) != 'color' {
+		@error "Invalid background color: #{$backgroundColor}. Must be a valid color.";
+	}
+
+	// Validate $blendMode
+	@if not
+		index(
+			(
+				normal,
+				multiply,
+				screen,
+				overlay,
+				darken,
+				lighten,
+				color-dodge,
+				color-burn,
+				hard-light,
+				soft-light,
+				difference,
+				exclusion,
+				hue,
+				saturation,
+				color,
+				luminosity
+			),
+			$blendMode
+		)
+	{
+		@error "Invalid blend mode: #{$blendMode}.";
+	}
+
+	// Validate $size (must have a valid unit: %, px, em, rem, vh, vw, or be 'auto')
+	$unit: unit($size);
+	@if not(
+		$unit ==
+			'%' or
+			$unit ==
+			'px' or
+			$unit ==
+			'em' or
+			$unit ==
+			'rem' or
+			$unit ==
+			'vh' or
+			$unit ==
+			'vw' or
+			$unit ==
+			'' or
+			$size ==
+			auto
+	)
+	{
+		@error "Invalid background size: #{$size}. Must be a percentage, px, em, rem, vh, vw, auto, or unitless.";
+	}
+
+	// Validate $image (must be a string)
+	@if type-of($image) != 'string' {
+		@error "Invalid image URL: #{$image}. Must be a string.";
+	}
+
+	position: $containerPosition;
+
+	&:after {
+		z-index: $zindex;
+		inset: 0;
+		background-color: $backgroundColor;
+		background-image: url(#{$image});
+		background-position: center;
+		background-size: $size;
+		background-repeat: no-repeat;
+		background-blend-mode: $blendMode;
+		@include pseudo;
+	}
+}
+
+@mixin object-fit(
+	$zindex: 0,
+	$containerClass: '--container',
+	$containerPosition: relative,
+	$fit: cover,
+	$position: center,
+	$width: 100%,
+	$height: 100%,
+	$aspectRatio: 1 / 1
+) {
+	// Validate $zindex
+	@if type-of($zindex) != 'number' and $zindex != auto {
+		@error "Invalid z-index: #{$zindex}. Must be a number or 'auto'.";
+	}
+
+	@if type-of($containerClass) != 'string' {
+		@error "Invalid container class: #{$containerClass}. Must be a string (e.g., '--container', '--wrapper', etc).";
+	}
+
+	// Validate $containerPosition
+	@if not
+		index((absolute, relative, fixed, static, sticky, inherit, unset, initial), $containerPosition)
+	{
+		@error "Invalid container position: #{$containerPosition}. Allowed values: absolute, relative, fixed, static, sticky, inherit, unset, initial.";
+	}
+
+	// Validate $fit
+	@if not index((fill, contain, cover, none, scale-down), $fit) {
+		@error "Invalid object-fit: #{$fit}. Allowed values: fill, contain, cover, none, scale-down.";
+	}
+
+	// Validate $position (Assumes valid CSS object-position values)
+	@if type-of($position) != 'string' {
+		@error "Invalid object-position: #{$position}. Must be a string (e.g., 'center', 'top left').";
+	}
+
+	// Validate $width and $height
+	$width-unit: unit($width);
+	$height-unit: unit($height);
+	@if not(
+		$width-unit ==
+			'%' or
+			$width-unit ==
+			'px' or
+			$width-unit ==
+			'em' or
+			$width-unit ==
+			'rem' or
+			$width-unit ==
+			'vh' or
+			$width-unit ==
+			'vw' or
+			$width ==
+			auto
+	)
+	{
+		@error "Invalid width: #{$width}. Must be a percentage, px, em, rem, vh, vw, or 'auto'.";
+	}
+
+	@if not(
+		$height-unit ==
+			'%' or
+			$height-unit ==
+			'px' or
+			$height-unit ==
+			'em' or
+			$height-unit ==
+			'rem' or
+			$height-unit ==
+			'vh' or
+			$height-unit ==
+			'vw' or
+			$height ==
+			auto
+	)
+	{
+		@error "Invalid height: #{$height}. Must be a percentage, px, em, rem, vh, vw, or 'auto'.";
+	}
+
+	// Validate $aspectRatio
+	@if type-of($aspectRatio) != 'number' {
+		@error "Invalid aspect ratio: #{$aspectRatio}. Must be a numeric ratio (e.g., 16/9, 1/1).";
+	}
+
+	position: absolute;
+	z-index: $zindex;
+	inset: 0;
+	width: $width;
+	height: $height;
+	object-fit: $fit;
+	object-position: $position;
+
+	&#{$containerClass} {
+		position: $containerPosition;
+		aspect-ratio: $aspectRatio;
+		overflow: hidden;
+	}
+}
+
+@mixin truncate-text($lines: 1, $truncation-boundary: 0) {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	@if ($truncation-boundary > 0) {
+		max-width: $truncation_boundary;
+		white-space: nowrap;
+	}
+	@if ($lines > 0) {
+		@supports (-webkit-line-clamp: $lines) {
+			display: -webkit-box !important;
+			-webkit-line-clamp: $lines;
+			-webkit-box-orient: vertical;
+			white-space: normal;
+		}
+	}
+}

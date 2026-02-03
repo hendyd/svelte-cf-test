@@ -1,0 +1,24 @@
+$white: #ffffff;
+$tea-green: #ccffcb;
+$fuchsia-flame: #e5007e;
+$cotton-rose: #f4c3c2;
+$graphite: #333333;
+$black: #000000;
+
+$primary: $fuchsia-flame;
+$secondary: $graphite;
+$dark: $graphite;
+
+$theme-colors: map-merge(
+	$theme-colors,
+	(
+		'primary': $primary,
+		'secondary': $secondary,
+		'white': $white,
+		'tea-green': $tea-green,
+		'fuchsia-flame': $fuchsia-flame,
+		'cotton-rose': $cotton-rose,
+		'graphite': $graphite,
+		'black': $black
+	)
+);

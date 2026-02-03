@@ -1,0 +1,15 @@
+.card {
+	--#{$prefix}card-height: 100%;
+	--#{$prefix}card-bg: rgba(#{to-rgb($cotton-rose)}, 0.25);
+	--#{$prefix}card-border-radius: 0;
+	--#{$prefix}card-border-width: 0;
+	ul li {
+		font-size: rem(16);
+		line-height: divide(24, 16);
+		&:not(:last-child) {
+			border-bottom: rem(1) solid rgba($secondary, 0.1);
+			padding-bottom: rem(8);
+			margin-bottom: rem(8);
+		}
+	}
+}

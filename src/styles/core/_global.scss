@@ -1,0 +1,50 @@
+::selection {
+	background: $primary;
+	color: $white;
+}
+main {
+	padding-bottom: rem(106);
+}
+
+.media {
+	@include object-fit;
+}
+
+.list-unstyled,
+li:last-child,
+p:last-child {
+	margin-bottom: 0;
+}
+
+h1 {
+	font-size: rem(50);
+	margin-bottom: rem(25);
+	@include media-breakpoint-up(md) {
+		font-size: rem(85);
+	}
+}
+
+h2 {
+	font-size: rem(40);
+	margin-bottom: rem(25);
+	@include media-breakpoint-up(md) {
+		font-size: rem(60);
+	}
+}
+
+h3 {
+	font-size: rem(30);
+	margin-bottom: rem(25);
+	@include media-breakpoint-up(md) {
+		font-size: rem(40);
+	}
+}
+
+.s-inview {
+	opacity: 0;
+	transition: all $base-transition-speed $base-transition-easing;
+
+	&-enter {
+		opacity: 1;
+	}
+}
