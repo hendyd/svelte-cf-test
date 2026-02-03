@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { anchors } from '$lib/data/anchors';
-	import '$styles/components/anchor-navigation.scss';
 
 	const scrollToAnchor = (e: MouseEvent) => {
 		e.preventDefault();

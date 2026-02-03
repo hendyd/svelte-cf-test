@@ -4,7 +4,6 @@
 	import { inview } from 'svelte-inview';
 	import { treatments, categories } from '$lib/data/treatments';
 	import type { CategoryKey, Treatment } from '$lib/data/treatments';
-	import '$styles/components/treatments.scss';
 	const treatmentsByCategory = Object.keys(categories).reduce(
 		(acc, key) => {
 			acc[key as CategoryKey] = treatments.filter((t) => t.category === key && t.active);
